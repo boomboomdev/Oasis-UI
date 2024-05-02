@@ -4,6 +4,19 @@ import logo from "../../assets/home/logo.png";
 // components
 import AWrapper from "../common/AWrapper";
 import DropButton from "./header/DropButton";
+// wallet
+import { createThirdwebClient } from "thirdweb";
+import { ConnectButton } from "thirdweb/react";
+import { createWallet, inAppWallet } from "thirdweb/wallets";
+
+const wallets = [
+  inAppWallet(),
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+];
+
+const client = createThirdwebClient({ clientId: "123" });
 
 const Header:FC=()=>{
     return (
@@ -16,7 +29,8 @@ const Header:FC=()=>{
               <DropButton title="dApp" />
               <DropButton title="Socials" />
               <DropButton title="Others" />
-              <button className="!p-2 rounded-2xl bg-white text-black/90 hover:bg-[#fff055] hover:text-black/90 text-xs sm:text-base tw-connect-wallet" style={{ fontSize: '16px', fontWeight: '500', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px', boxSizing: 'border-box', lineHeight: 'normal', gap: 0, background: 'hsl(256, 6.0%, 93.2%)', color: 'hsl(230deg 11.63% 8.43%)', minWidth: '140px'}}>Connect Wallet</button>
+              {/* <button className="!p-2 rounded-2xl bg-white text-black/90 hover:bg-[#fff055] hover:text-black/90 text-xs sm:text-base tw-connect-wallet" style={{ fontSize: '16px', fontWeight: '500', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px', boxSizing: 'border-box', lineHeight: 'normal', gap: 0, background: 'hsl(256, 6.0%, 93.2%)', color: 'hsl(230deg 11.63% 8.43%)', minWidth: '140px'}}>Connect Wallet</button> */}
+              <ConnectButton client={client} wallets={wallets} />
           </ul>
         </header>
       </nav>
