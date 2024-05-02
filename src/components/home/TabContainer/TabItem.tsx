@@ -6,6 +6,7 @@ interface Props {
   image?: string;
   title: string;
   svg?: ReactNode;
+  to: string;
 }
 const TabItem:FC<Props>=(props)=>{
     return (
