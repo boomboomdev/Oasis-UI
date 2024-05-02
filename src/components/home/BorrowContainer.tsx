@@ -1,12 +1,18 @@
-import { FC } from "react"
-import TabItem from "./BorrowContainer/TabItem"
-import TableContainer from "./BorrowContainer/TableContainer"
+import { FC, useState } from "react"
 // assets
 // components
+import TabItem from "./BorrowContainer/TabItem"
+import TabContentFirst from "./BorrowContainer/TabContentFirst";
+import TabContentSecond from "./BorrowContainer/TabContentSecond";
+import TabContentThird from "./BorrowContainer/TabContentThird";
 
 interface Props {
 }
 const BorrowContainer:FC<Props>=()=>{
+    const [tabIndex, setTabIndex] = useState(1);
+    const handleSetTabIndex = (index : number) => {
+      setTabIndex(index);
+    }
     return (
         <>
           <div className="py-3 px-1 outline-none w-full flex items-center justify-center">
@@ -18,30 +24,15 @@ const BorrowContainer:FC<Props>=()=>{
                 <div className="my-4">
                   <div className="w-full flex items-center justify-center">
                     <div className="flex p-1 h-fit gap-2 items-center flex-nowrap bg-[#27272A] rounded-md">
-                      <TabItem title="ERC20" />
-                      <TabItem title="ERC721" active />
-                      <TabItem title="ERC1155" />
+                      <TabItem title="ERC20" active={0} tabIndex={tabIndex} handleSetTabIndex={handleSetTabIndex} />
+                      <TabItem title="ERC721" active={1} tabIndex={tabIndex} handleSetTabIndex={handleSetTabIndex} />
+                      <TabItem title="ERC1155" active={2} tabIndex={tabIndex} handleSetTabIndex={handleSetTabIndex} />
                     </div>
                   </div>
 
-                  <div className="py-3 outline-none px-0">
-                    <div className="flex flex-col gap-4 overflow-x-auto py-4 max-w-[95vw]">
-                      <div className="flex flex-col gap-4">
-                        <div className="flex flex-col relative gap-4 w-full">
-                          <div className="p-4 z-0 flex flex-col relative justify-between gap-4 bg-[#18181B] overflow-auto rounded-lg shadow-sm w-full">
-                            <TableContainer />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-4">
-                        <div className="flex flex-col relative gap-4 w-full">
-                          <div className="p-4 z-0 flex flex-col relative justify-between gap-4 bg-[#18181B] overflow-auto rounded-lg shadow-sm w-full">
-                            <TableContainer />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {tabIndex === 0 && <TabContentFirst />}
+                  {tabIndex === 1 && <TabContentSecond />}
+                  {tabIndex === 2 && <TabContentThird />}
                 </div>
               </div>
             </div>

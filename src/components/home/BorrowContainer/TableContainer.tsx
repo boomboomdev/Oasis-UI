@@ -3,8 +3,9 @@ import { FC } from "react"
 //component
 
 interface Props {
+  description: string;
 }
-const TableContainer:FC<Props>=()=>{
+const TableContainer:FC<Props>=(props)=>{
     return (
         <>
           <table className="min-w-full h-auto table-auto w-full min-h-[200px]">
@@ -35,7 +36,7 @@ const TableContainer:FC<Props>=()=>{
             </thead>
             <tbody>
               <tr>
-                <td colSpan={7} className="text-[#71717A] align-middle text-center h-40">No items to display.</td>
+                <td colSpan={7} className="text-[#71717A] align-middle text-center h-40">{props.description}</td>
               </tr>
             </tbody>
           </table>
