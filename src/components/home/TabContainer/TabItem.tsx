@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react"
+import { Link } from "react-router-dom";
 // assets
 interface Props {
   active?: boolean;
@@ -18,18 +19,20 @@ const TabItem:FC<Props>=(props)=>{
                 <span className="absolute z-0 h-[2px] bottom-0 shadow-[0_1px_0px_0_rgba(0,0,0,0.05)] rounded-none w-full bg-[#f9d44f]"></span>
               )
             }
-            <div className="relative z-10 whitespace-nowrap transition-colors text-default-500">
-              <div className="flex items-center space-x-1 sm:space-x-2">
-                {props.isSvg ? (
-                  props.svg
-                ) : (
-                  <div className="relative shadow-black/5 shadow-none rounded-large" style={{maxWidth: "32px"}}>
-                    <img className="w-[32px] h-[32px] text-transparent relative z-10 shadow-black/5 shadow-none transition-transform-opacity h-3 w-3 sm:h-8 sm:w-8 rounded-none" src={props.image} />
-                  </div>
-                )}
-                <span className={props.active ? "text-[#F9D44F]" : "text-[#A1A1AA]"}>{props.title}</span>
+            <Link to={props.to}>
+              <div className="relative z-10 whitespace-nowrap transition-colors text-default-500">
+                <div className="flex items-center space-x-1 sm:space-x-2">
+                  {props.isSvg ? (
+                    props.svg
+                  ) : (
+                    <div className="relative shadow-black/5 shadow-none rounded-large" style={{maxWidth: "32px"}}>
+                      <img className="w-[32px] h-[32px] text-transparent relative z-10 shadow-black/5 shadow-none transition-transform-opacity h-3 w-3 sm:h-8 sm:w-8 rounded-none" src={props.image} />
+                    </div>
+                  )}
+                  <span className={props.active ? "text-[#F9D44F]" : "text-[#A1A1AA]"}>{props.title}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           </button>
         </>
     )
