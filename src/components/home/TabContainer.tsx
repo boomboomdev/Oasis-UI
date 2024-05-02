@@ -16,11 +16,11 @@ const TabContainer:FC<Props>=(props)=>{
         <>
           <div className="inline-flex">
             <div className="flex h-fit items-center flex-nowrap bg-transparent dark:bg-transparent gap-2 sm:gap-6 w-full relative rounded-none p-0 border-b border-white border-opacity-15 justify-evenly sm:justify-between">
-              <TabItem title="Dashboard" image={folder} active={props.active === "dashboard" ? true : false} />
-              <TabItem title="Collateral" image={collateral} />
-              <TabItem title="Borrow" image={borrow} active={props.active === "borrow" ? true : false} />
-              <TabItem title="Staking" image={staking} />
-              <TabItem title="Auctions" svg={<Auction />} isSvg />
+              <TabItem title="Dashboard" to="/" image={folder} active={props.active === "dashboard" ? true : false} />
+              <TabItem title="Collateral" to="/" image={collateral} />
+              <TabItem title="Borrow" to="borrow" image={borrow} active={props.active === "borrow" ? true : false} />
+              <TabItem title="Staking" to="/" image={staking} />
+              <TabItem title="Auctions" to="/" svg={<Auction />} isSvg />
             </div>
           </div>
         </>
