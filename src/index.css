@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./assets/Rubik-Regular.ttf') format('truetype');
+  /* You can also specify other font properties, such as font-weight and font-style */
+}
+#root{
+  width:100%;
+}
+
+body {
+  font-family: CustomFont;
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: black;
+  color:white;
+}
+
